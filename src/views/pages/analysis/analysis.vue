@@ -105,7 +105,7 @@ export default {
      * hode mondal on close
      */
     // eslint-disable-next-line no-unused-vars
-    hideModal(e) {
+    hideModal() {
       this.submitted = false;
       this.showmodal = false;
       this.contacts = {};

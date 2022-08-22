@@ -155,44 +155,7 @@
                 this.competitive = item;
                 this.competitive.exchange_rate = item.currency.exchange_rate;
                 this.submitted = true;
-
-                // stop here if form is invalid
-                this.$v.$touch();
-                if (this.$v.$invalid) {
-                    console.log(this.$v)
-                    return;
-                } else {
-                    const name = this.competitive.name;
-                    const currency_id = this.competitive.currency;
-                    const location = this.competitive.location;
-                    const status = this.competitive.status;
-                    const user = this.competitive.user;
-                    const password = this.competitive.password;
-                    const endpoint_url = this.competitive.endpoint_url;
-                    const api_key = this.competitive.api_key;
-                    const type_obtencion_data = this.competitive.type_obtencion_data;
-                    var data = {
-                        name,
-                        currency_id,
-                        location,
-                        status,
-                        user,
-                        password,
-                        endpoint_url,
-                        type_obtencion_data,
-                        api_key
-                    };
-                    this.showmodal = false;
-                    competitiveResource.update(item.id,data).then(response => {
-                        console.log(response)
-                        this.$router.push('/competitive');
-                    }).catch(error => {
-                        console.log(error);
-                    }).finally(() => {
-                        this.loading = false;
-                    });
-                }
-                this.hideModal(e);
+                console.log(item);
 
             },
             /**
@@ -238,7 +201,7 @@
                         this.loading = false;
                     });
                 }
-                this.hideModal(e);
+                this.hideModal();
             },
 
 
@@ -246,7 +209,7 @@
              * hode mondal on close
              */
             // eslint-disable-next-line no-unused-vars
-            hideModal(e) {
+            hideModal() {
                 this.submitted = false;
                 this.showmodal = false;
                 this.contacts = {};
