@@ -5,7 +5,7 @@ import { getToken, setToken } from '@/utils/auth';
 
 // Create axios instance
 const service = axios.create({
-  baseURL: 'http://127.0.0.1:5000/api',
+  baseURL: 'http://jxarenas21990.pythonanywhere.com/api',
   timeout: 0, // Request timeout
 });
 
