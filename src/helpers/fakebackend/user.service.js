@@ -1,4 +1,5 @@
 import { authHeader } from './auth-header';
+import request from "../../utils/request";
 
 export const userService = {
     login,
@@ -14,9 +15,7 @@ function login(email, password) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
     };
-
-    return fetch(`http://127.0.0.1:5000/users/authenticate`, requestOptions)
-        .then(handleResponse)
+    return request.post('/users/authenticate', requestOptions).then(handleResponse)
         .then(user => {
             console.log(user)
             // login successful if there's a jwt token in the response
