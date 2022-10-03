@@ -10,12 +10,12 @@ export const userService = {
 
 function login(email, password) {
 
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-    };
-    return request.post('/users/authenticate', requestOptions).then(handleResponse)
+    // const requestOptions = {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ email, password })
+    // };
+    return request.post('/users/authenticate', { email, password }).then(handleResponse)
         .then(user => {
             console.log(user)
             // login successful if there's a jwt token in the response
@@ -50,18 +50,14 @@ function getAll() {
 }
 
 function handleResponse(response) {
-    return response.text().then(text => {
-        const data = text && JSON.parse(text);
-        console.log(data)
-        if (!response.ok) {
-            if (response.status === 401) {
-                // auto logout if 401 response returned from api
-                logout();
-                location.reload(true);
-            }
-            const error = (data && data.message) || response.statusText;
+
+    if (response.message === 'Usuario o contraseña incorrecta') {
+            // auto logout if 401 response returned from api
+            logout();
+            const error = response.message;
             return Promise.reject(error);
-        }
-        return data;
-    });
+            // location.reload(true);
+    }
+
+    return response;
 }

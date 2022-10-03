@@ -7,7 +7,7 @@
       "megamenu": {
         "text": "Mega Menu",
         "uicontent": {
-          "title": "UI Components",
+          "title": "Competidores",
           "list": {
             "lightbox": "Lightbox",
             "rangeslider": "Range Slider",
@@ -111,7 +111,6 @@
     "adjust": {
       "text": "Ajuste",
       "list": {
-        "general": "General",
         "coins": "Monedas",
         "users": "Usuarios"
       }

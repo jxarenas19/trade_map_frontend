@@ -47,15 +47,15 @@ export const menuItems = [
         label: 'menuitems.adjust.text',
         icon: 'ri-profile-line',
         subItems: [
-            {
-                id: 9,
-                label: 'menuitems.adjust.list.general',
-                link: '/adjust/general'
-            },
+            // {
+            //     id: 9,
+            //     label: 'menuitems.adjust.list.general',
+            //     link: '/adjust/general'
+            // },
             {
                 id: 10,
                 label: 'menuitems.adjust.list.coins',
-                link: '/adjust/coins'
+                link: '/adjust/currencies'
             },
             {
                 id: 11,

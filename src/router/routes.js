@@ -58,11 +58,7 @@ export default [
         meta: {
             authRequired: true,
             beforeResolve(routeTo, routeFrom, next) {
-                if (process.env.VUE_APP_DEFAULT_AUTH === "firebase") {
-                    store.dispatch('auth/logOut')
-                } else {
-                    store.dispatch('authfack/logout')
-                }
+                store.dispatch('authfack/logout')
                 const authRequiredOnPreviousRoute = routeFrom.matched.some(
                     (route) => route.push('/login')
                 )
@@ -84,6 +80,18 @@ export default [
         name: 'Competidores',
         meta: { authRequired: true },
         component: () => import('../views/pages/competitive/competitives')
+    },
+    {
+        path: '/adjust/currencies',
+        name: 'Monedas',
+        meta: { authRequired: true },
+        component: () => import('../views/pages/currency/currencies')
+    },
+    {
+        path: '/adjust/users',
+        name: 'Usuarios',
+        meta: { authRequired: true },
+        component: () => import('../views/pages/user/users')
     },
     {
         path: '/analysis/*',
