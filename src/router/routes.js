@@ -75,17 +75,17 @@ export default [
         },
         component: () => import('../views/pages/dashboard/index')
     },
+    // {
+    //     path: '/competitive',
+    //     name: 'Competidores',
+    //     meta: { authRequired: true },
+    //     component: () => import('../views/pages/competitive/competitives')
+    // },
     {
-        path: '/competitive',
-        name: 'Competidores',
+        path: '/companies',
+        name: 'Compañías',
         meta: { authRequired: true },
-        component: () => import('../views/pages/competitive/competitives')
-    },
-    {
-        path: '/adjust/currencies',
-        name: 'Monedas',
-        meta: { authRequired: true },
-        component: () => import('../views/pages/currency/currencies')
+        component: () => import('../views/pages/company/companies')
     },
     {
         path: '/adjust/users',

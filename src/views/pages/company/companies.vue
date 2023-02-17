@@ -5,7 +5,7 @@
     import PageHeader from "@/components/page-header";
     import Resource from "@/api/resource";
 
-    const currencyResource = new Resource('currency');
+    const companyResource = new Resource('company');
 
     /**
      * Competitive Component
@@ -27,18 +27,23 @@
                     limit: 15,
                     keyword: '',
                 },
-                title: "Monedas",
+                title: "Compañias",
                 items: [
                     {
-                        text: "Monedas"
+                        text: "Compañias"
                     }
                 ],
-                currency: {
+                company: {
                     id: "",
                     name: "",
-                    abbreviation: "",
-                    exchange_rate: "",
-                    default: "",
+                    level: "",
+                    bussiness_vol: "",
+                    country: "",
+                    city: "",
+                    web: "",
+                    product: "",
+                    number_categories: "",
+                    number_employes: "",
 
                 },
                 submitted: false,
@@ -51,11 +56,16 @@
             this.getList();
         },
         validations: {
-            currency: {
+            company: {
                 name: {required},
-                exchange_rate: {required},
-                abbreviation: {},
-                default: {}
+                level_product: {required},
+                bussiness_vol: {},
+                country: {},
+                city: {},
+                web: {},
+                product: {required},
+                number_categories: {},
+                number_employes: {}
             }
         },
         methods: {
@@ -65,7 +75,7 @@
             async getList() {
                 this.loading = true;
                 try {
-                    const {data, total} = await currencyResource.list(this.query);
+                    const {data, total} = await companyResource.list(this.query);
                     this.list = data;
                     this.total = total;
                     this.loading = false;
@@ -82,19 +92,24 @@
                 this.showmodal = true;
             },
             resetForm() {
-                this.currency = {
+                this.company = {
                     id: "",
                     name: "",
-                    exchange_rate: "",
-                    abbreviation: "",
-                    default: ""
+                    level_product: "",
+                    bussiness_vol: "",
+                    country: "",
+                    city: "",
+                    web: "",
+                    product: "",
+                    number_categories: "",
+                    number_employes: "",
                 };
             },
 
             handleEdit(item) {
                 this.resetForm();
                 this.showmodal = true;
-                this.currency = item;
+                this.company = item;
                 this.submitted = true;
 
             },
@@ -110,20 +125,30 @@
                 if (this.$v.$invalid) {
                     return;
                 } else {
-                    const name = this.currency.name;
-                    const abbreviation = this.currency.abbreviation;
-                    const exchange_rate = this.currency.exchange_rate;
-                    const default_status = this.currency.default;
+                    const name = this.company.name;
+                    const level_product = this.company.level;
+                    const bussiness_vol = this.company.bussiness_vol;
+                    const country = this.company.country;
+                    const city = this.company.city;
+                    const web = this.company.web;
+                    const product = this.company.product;
+                    const number_categories = this.company.number_categories;
+                    const number_employes = this.company.number_employes;
                     var data = {
                         name,
-                        abbreviation,
-                        exchange_rate,
-                        default_status
+                        level_product,
+                        bussiness_vol,
+                        country,
+                        city,
+                        product,
+                        web,
+                        number_categories,
+                        number_employes,
                     };
                     this.showmodal = false;
-                    currencyResource.store(data).then(response => {
+                    companyResource.store(data).then(response => {
                         console.log(response)
-                        this.$router.push('/adjust/currencies');
+                        this.$router.push('/adjust/companies');
                     }).catch(error => {
                         console.log(error);
                     }).finally(() => {
@@ -164,7 +189,7 @@
                     <div class="card-body">
                         <div>
                             <a href="javascript:void(0);" class="btn btn-success mb-2" @click="handleAdd">
-                                <i class="mdi mdi-plus mr-2"></i> Adicionar Moneda
+                                <i class="mdi mdi-plus mr-2"></i> Adicionar Compañía
                             </a>
                         </div>
                         <div class="table-responsive mt-3">
@@ -181,8 +206,14 @@
                                         </div>
                                     </th>
                                     <th>Nombre</th>
-                                    <th>Abreviatura</th>
-                                    <th>Tasa de cambio</th>
+                                    <th>Nivel</th>
+                                    <th>Producto</th>
+                                    <th>Vol Negocio</th>
+                                    <th>Categorías</th>
+                                    <th>Empleados</th>
+                                    <th>País</th>
+                                    <th>Ciudad</th>
+                                    <th>Web</th>
                                     <th style="width: 120px;">Operaciones</th>
                                 </tr>
                                 </thead>
@@ -200,8 +231,14 @@
                                         </div>
                                     </td>
                                     <td>{{ item.name }}</td>
-                                    <td>{{ item.abbreviation }}</td>
-                                    <td>{{ item.exchange_rate }}</td>
+                                    <td>{{ item.level_product }}</td>
+                                    <td>{{ item.product }}</td>
+                                    <td>{{ item.bussiness_vol }}</td>
+                                    <td>{{ item.number_categories }}</td>
+                                    <td>{{ item.number_employes }}</td>
+                                    <td>{{ item.country }}</td>
+                                    <td>{{ item.city }}</td>
+                                    <td>{{ item.web }}</td>
                                     <td>
                                         <a
                                                 href="javascript:void(0);"
@@ -241,7 +278,7 @@
         <b-modal
                 id="modal-1"
                 v-model="showmodal"
-                title="Adicionar Moneda"
+                title="Adicionar Compañía"
                 title-class="text-dark font-18"
                 hide-footer
         >
@@ -250,14 +287,14 @@
                     <label for="name">Nombre</label>
                     <input
                             id="name"
-                            v-model="currency.name"
+                            v-model="company.name"
                             type="text"
                             class="form-control"
                             placeholder="Introduzca el nombre"
-                            :class="{ 'is-invalid': submitted && $v.currency.name.$error }"
+                            :class="{ 'is-invalid': submitted && $v.company.name.$error }"
                     />
                     <div
-                            v-if="submitted && !$v.currency.name.required"
+                            v-if="submitted && !$v.company.name.required"
                             class="invalid-feedback"
                     >Nombre requerido
                     </div>
@@ -266,14 +303,14 @@
                     <label for="endpoint_url">Abreviatura</label>
                     <input
                             id="endpoint_url"
-                            v-model="currency.abbreviation"
+                            v-model="company.abbreviation"
                             type="text"
                             class="form-control"
                             placeholder="Introduzca la abreviatura"
-                            :class="{ 'is-invalid': submitted && $v.currency.abbreviation.$error }"
+                            :class="{ 'is-invalid': submitted && $v.company.abbreviation.$error }"
                     />
                     <div
-                            v-if="submitted && !$v.currency.abbreviation.required"
+                            v-if="submitted && !$v.company.abbreviation.required"
                             class="invalid-feedback"
                     >Abreviatura requerida
                     </div>
@@ -282,14 +319,14 @@
                     <label for="endpoint_url">Tasa de cambio</label>
                     <input
                             id="location"
-                            v-model="currency.exchange_rate"
+                            v-model="company.exchange_rate"
                             type="text"
                             class="form-control"
                             placeholder="Introduzca la tasa de cambio"
-                            :class="{ 'is-invalid': submitted && $v.currency.exchange_rate.$error }"
+                            :class="{ 'is-invalid': submitted && $v.company.exchange_rate.$error }"
                     />
                     <div
-                            v-if="submitted && !$v.currency.exchange_rate.required"
+                            v-if="submitted && !$v.company.exchange_rate.required"
                             class="invalid-feedback"
                     >Tasa de cambio requerida
                     </div>

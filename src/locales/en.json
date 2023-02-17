@@ -97,23 +97,8 @@
       "text": "Dashboard",
       "badge": "3"
     },
-    "competitive": {
-      "text": "Competidores"
-    },
-    "analysis": {
-      "text": "Analisis",
-      "list": {
-        "iemi_service": "Servicios de IMEI",
-        "server_service": "Servicios de Servidor",
-        "remote_service": "Servicios Remotos"
-      }
-    },
-    "adjust": {
-      "text": "Ajuste",
-      "list": {
-        "coins": "Monedas",
-        "users": "Usuarios"
-      }
+    "companies": {
+      "text": "Compañías"
     }
   }
 }
