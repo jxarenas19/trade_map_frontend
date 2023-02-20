@@ -103,6 +103,10 @@
                     keyword: '',
                 }
                 this.getList();
+            },
+            handleFilter() {
+                this.query.page = 1;
+                this.getList();
             }
         }
     };
@@ -138,6 +142,7 @@
                                                 <b-form-input
                                                         v-model="filter"
                                                         type="search"
+                                                        @keyup.enter.native="handleFilter"
                                                         class="form-control form-control-sm ml-2"
                                                 ></b-form-input>
                                             </label>
@@ -155,8 +160,7 @@
                                             :current-page="currentPage"
                                             :sort-by.sync="sortBy"
                                             :sort-desc.sync="sortDesc"
-                                            :filter="filter"
-                                            :filter-included-fields="filterOn"
+
                                             @filtered="onFiltered"
                                     >
                                         <template v-slot:cell(paymentstatus)="row">
