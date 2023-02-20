@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Cookies from 'js-cookie';
 import App from './App.vue'
 import BootstrapVue from 'bootstrap-vue'
 import VueApexCharts from 'vue-apexcharts'
@@ -7,6 +8,22 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import VueMask from 'v-mask'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import VueYoutube from 'vue-youtube'
+import ElementUI from 'element-ui';
+import es from 'element-ui/src/locale/lang/es'; // global filters
+
+// Fixes an issue with filters not working on mobile
+ElementUI.Select.computed.readonly = function () {
+  // trade-off for IE input readonly problem: https://github.com/ElemeFE/element/issues/10403
+  const isIE = !this.$isServer && !Number.isNaN(Number(document.documentMode));
+
+  return !(this.filterable || this.multiple || !isIE) && !this.visible;
+};
+
+Vue.use(ElementUI, {
+  size: Cookies.get('size') || 'medium', // set element-ui default size
+  // i18n: (key, value) => i18n.t(key, value),
+  locale: es,
+});
 
 import vco from "v-click-outside"
 
@@ -45,6 +62,7 @@ Vue.use(Vuelidate)
 Vue.use(VueSweetalert2);
 Vue.use(VueMask)
 Vue.use(require('vue-chartist'))
+
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyAbvyBxmMbFhrzP9Z8moyYr6dCr-pzjhBE',
