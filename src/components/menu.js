@@ -19,6 +19,12 @@ export const menuItems = [
         label: 'menuitems.companies.text',
         icon: 'ri-calendar-2-line',
         link: '/companies'
+    },
+    {
+        id: 4,
+        label: 'menuitems.products_group.text',
+        icon: 'ri-calendar-2-line',
+        link: '/products_group'
     }
 
 ]

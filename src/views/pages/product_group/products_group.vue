@@ -34,7 +34,7 @@
                 pageOptions: [10, 25, 50, 100],
                 filter: null,
                 filterOn: [],
-                sortBy: "orderid",
+                sortBy: "level_string",
                 sortDesc: false,
                 query: {
                     page: 1,
@@ -42,10 +42,10 @@
                     keyword: '',
                 },
                 fields: [
-                    {key: "id", sortable: true, label: "ID"},
+                    // {key: "id", sortable: true, label: "ID"},
                     {key: "name", sortable: true, label: "Nombre"},
                     {key: "level_string", sortable: true, label: "Nivel"},
-                    {key: "father_string", sortable: true, label: "Level Superior"}
+                    // {key: "father_string", sortable: true, label: "Level Superior"}
 
                 ]
             };

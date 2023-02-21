@@ -88,6 +88,12 @@ export default [
         component: () => import('../views/pages/company/companies')
     },
     {
+        path: '/products_group',
+        name: 'Productos Grupos',
+        meta: { authRequired: true },
+        component: () => import('../views/pages/product_group/products_group')
+    },
+    {
         path: '/adjust/users',
         name: 'Usuarios',
         meta: { authRequired: true },

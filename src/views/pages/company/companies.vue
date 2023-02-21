@@ -23,7 +23,7 @@
                         text: "Ecommerce"
                     },
                     {
-                        text: "Orders",
+                        text: "Compañías",
                         active: true
                     }
                 ],
@@ -34,7 +34,7 @@
                 pageOptions: [10, 25, 50, 100],
                 filter: null,
                 filterOn: [],
-                sortBy: "orderid",
+                sortBy: "name",
                 sortDesc: false,
                 query: {
                     page: 1,
@@ -42,15 +42,15 @@
                     keyword: '',
                 },
                 fields: [
-                    {key: "id", sortable: true, label: "ID"},
+                    // {key: "id", sortable: true, label: "ID"},
                     {key: "name", sortable: true, label: "Nombre"},
-                    {key: "level", sortable: true, label: "Nivel"},
+                    // {key: "level", sortable: true, label: "Nivel"},
                     {key: "bussiness_vol", sortable: true, label: "Vol Negocio"},
                     {key: "country", sortable: true, label: "País"},
-                    {key: "city", sortable: true, label: "Ciudad"},
+                    // {key: "city", sortable: true, label: "Ciudad"},
                     // {key: "web", sortable: true},
-                    {key: "product", sortable: true, label: "Producto"},
-                    {key: "number_categories", sortable: true, label: "Categorías"},
+                    // {key: "product", sortable: true, label: "Producto"},
+                    // {key: "number_categories", sortable: true, label: "Categorías"},
                     {key: "number_employes", sortable: true, label: "Empleados"}
 
                 ]
@@ -122,7 +122,7 @@
                         <b-tabs nav-class="nav-tabs-custom">
                             <b-tab title-link-class="p-3">
                                 <template v-slot:title>
-                                    <a class="font-weight-bold active">All Orders</a>
+                                    <a class="font-weight-bold active">Compañías</a>
                                 </template>
                                 <div class="row mt-4">
                                     <div class="col-sm-12 col-md-6">

@@ -99,6 +99,9 @@
     },
     "companies": {
       "text": "Compañías"
+    },
+    "products_group": {
+      "text": "Grupo Productos"
     }
   }
 }
