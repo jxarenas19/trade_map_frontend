@@ -17,7 +17,7 @@
         },
         data() {
             return {
-                title: "Orders",
+                title: "Compañias",
                 items: [
                     {
                         text: "Ecommerce"

@@ -5,7 +5,7 @@
     import Resource from "@/api/resource";
 
 
-    const companyResource = new Resource('company');
+    const companyResource = new Resource('product_group');
     /**
      * Orders Component
      */
@@ -44,14 +44,8 @@
                 fields: [
                     {key: "id", sortable: true, label: "ID"},
                     {key: "name", sortable: true, label: "Nombre"},
-                    {key: "level", sortable: true, label: "Nivel"},
-                    {key: "bussiness_vol", sortable: true, label: "Vol Negocio"},
-                    {key: "country", sortable: true, label: "País"},
-                    {key: "city", sortable: true, label: "Ciudad"},
-                    // {key: "web", sortable: true},
-                    {key: "product", sortable: true, label: "Producto"},
-                    {key: "number_categories", sortable: true, label: "Categorías"},
-                    {key: "number_employes", sortable: true, label: "Empleados"}
+                    {key: "level_string", sortable: true, label: "Nivel"},
+                    {key: "father_string", sortable: true, label: "Level Superior"}
 
                 ]
             };
