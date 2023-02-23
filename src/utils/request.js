@@ -5,8 +5,8 @@ import { getToken, setToken } from '@/utils/auth';
 
 // Create axios instance
 const service = axios.create({
-  // baseURL: 'http://127.0.0.1:3000/api',
-  baseURL: 'https://coniungo.com.ar/api',
+  baseURL: 'https://api.coniungo.com.ar/api',
+  // baseURL: 'https://coniungo.com.ar/api',
   timeout: 0, // Request timeout
 });
 
